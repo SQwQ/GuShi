@@ -19,16 +19,31 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="?attr/colorPrimary"
+            android:background="@android:color/transparent"
+            app:contentScrim="@color/white"
+            app:title=" "
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
+
+            <ImageView
+                android:id="@+id/backdrop"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                android:src="@drawable/pond"
+                app:layout_collapseMode="parallax" />
+
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
+
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -42,31 +57,43 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-    <!--
-    <SearchView
-        android:id="@+id/search"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|end"
+        app:maxImageSize="40dp"
+        android:src="@drawable/back"
+        app:backgroundTint="@android:color/white"
         />
+    <!--app:srcCompat="@android:drawable/ic_dialog_email" -->
 
-    <LinearLayout
+<SearchView
+    android:id="@+id/search"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:iconifiedByDefault="false"
+
+    />
+<ListView
+    android:id="@+id/fav_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/search"
+    app:layout_anchorGravity="bottom|end"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    />
+
+<!--
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_below="@+id/search">
+
+
+    <ListView
+        android:id="@+id/fav_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/search">
-
-
-        <ListView
-            android:id="@+id/fav_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
-    -->
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
+-->
 
 
 

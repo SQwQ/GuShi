@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.TextView;
 
@@ -20,6 +21,9 @@ public class ViewFavs extends AppCompatActivity {
         setContentView(R.layout.activity_view_favs);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView analysis = findViewById(R.id.analysis);
+        analysis.setMovementMethod(new ScrollingMovementMethod());
 
         TextView poem = findViewById(R.id.poem);
 

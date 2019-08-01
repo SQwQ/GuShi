@@ -169,7 +169,7 @@ public class CheckFavs extends AppCompatActivity implements SearchView.OnQueryTe
                                 selectedItemsPositions.add(pos);
                                 System.out.println("added to list" + " " + pos);
                             }
-                            buttonView.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.star_big_off));
+                            buttonView.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.check_fav_off));
 
 
                         } else {
@@ -177,7 +177,7 @@ public class CheckFavs extends AppCompatActivity implements SearchView.OnQueryTe
                             if (selectedItemsPositions.contains(pos)) {
                                 selectedItemsPositions.remove((Object) pos);
                             }
-                            buttonView.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.star_big_on));
+                            buttonView.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.check_fav_on));
                         }
                     }
 

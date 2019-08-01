@@ -8,6 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Study cursors"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         android:focusable="false"
         android:focusableInTouchMode="false"/>
     <TextView
@@ -15,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/black"
         android:text="3"
+        android:textStyle="bold"
         android:focusable="false"
         android:focusableInTouchMode="false"/>
     <TextView
@@ -23,20 +27,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:textColor="@color/black"
         android:text="3"
+        android:textStyle="bold"
         android:focusable="false"
         android:focusableInTouchMode="false"/>
 
     <ToggleButton
         android:id="@+id/delete"
-        android:background="@color/cardview_light_background"
+        android:background="@drawable/check_fav_on"
         android:textOff=""
         android:textOn=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_margin="@dimen/fab_margin"
-        android:drawableTop="@android:drawable/btn_star_big_on"
         android:focusable="false"
         android:focusableInTouchMode="false"/>
 

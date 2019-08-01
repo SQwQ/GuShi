@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/golden"
     tools:context=".MainActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -15,30 +16,13 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="@color/gold"
+            app:title=" "
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_main" />
-
-    <ToggleButton
-        android:id="@+id/star"
-        android:background="@color/cardview_light_background"
-        android:textOff=""
-        android:textOn=""
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/generatePoem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/radiobutton_off_background" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/getFav"
@@ -46,7 +30,49 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/arrow_down_float" />
+        android:src="@drawable/poem_saved"
+        app:maxImageSize="56dp"
+        app:backgroundTint="@android:color/white"/>
+
+    <RelativeLayout
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        >
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/generatePoem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:maxImageSize="56dp"
+            app:backgroundTint="@android:color/transparent"
+            android:src="@drawable/gen_poem"
+            />
+        <!--@drawable/staroff
+        app:srcCompat="@android:drawable/radiobutton_off_background"-->
+        <TextView
+            android:id="@+id/poemoftheday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text=" "
+            android:layout_below="@+id/generatePoem"
+        />
+    </RelativeLayout>
+
+
+    <ToggleButton
+        android:id="@+id/star"
+        android:textOff=""
+        android:textOn=""
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:background="@drawable/fav_off"
+        />
+
 
 
 </android.support.design.widget.CoordinatorLayout>

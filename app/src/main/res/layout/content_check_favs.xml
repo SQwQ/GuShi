@@ -6,20 +6,24 @@
     tools:context=".CheckFavs"
     tools:showIn="@layout/activity_check_favs"
     >
-
+    <!--
     <SearchView
         android:id="@+id/search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:iconifiedByDefault="false"
-        />
+        android:layout_below="@+id/app_bar"
+        android:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:iconifiedByDefault="false" />
+
 
     <ListView
         android:id="@+id/fav_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/search"
+        android:layout_behavior="@string/appbar_scrolling_view_behavior"
         />
+     -->
 
 
 

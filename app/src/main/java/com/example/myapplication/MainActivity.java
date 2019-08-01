@@ -85,13 +85,13 @@ public class MainActivity extends AppCompatActivity {
                 if (isChecked) {
                     System.out.println("checked!!!!!");
                     sqlHelper.addData(current_id, current_title, current_author, current_content);
-                    star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.star_big_on));
+                    star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.fav_on));
 
 
                 } else {
                     System.out.println("unchecked!!!");
                     sqlHelper.deletePoem(current_id);
-                    star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.star_big_off));
+                    star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.fav_off));
                 }
             }
 
@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println("true star");
             } else {
                 star.setChecked(false);
-                star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.star_big_off));
+                star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.fav_off));
                 System.out.println("false star");
             }
                 //star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), android.R.drawable.star_big_on));
