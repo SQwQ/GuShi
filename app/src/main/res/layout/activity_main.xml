@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text=" "
-            android:layout_below="@+id/generatePoem"
+            android:layout_toRightOf="@+id/generatePoem"
         />
     </RelativeLayout>
 
