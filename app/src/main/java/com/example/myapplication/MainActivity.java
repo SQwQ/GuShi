@@ -1,10 +1,14 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -65,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         sqlHelper = new DatabaseHelper(getApplicationContext());
         result = (TextView) findViewById(R.id.poemoftheday);
+
+        ConnectivityManager cm =
+                (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        final boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+
         /*
         result.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,8 +97,10 @@ public class MainActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     System.out.println("checked!!!!!");
-                    sqlHelper.addData(current_id, current_title, current_author, current_content);
-                    star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.fav_on));
+                    if (current_id != null) {
+                        sqlHelper.addData(current_id, current_title, current_author, current_content);
+                        star.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.fav_on));
+                    }
 
 
                 } else {
@@ -102,12 +116,15 @@ public class MainActivity extends AppCompatActivity {
         genPoem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //        .setAction("Action", null).show();
+                //
+                if (isConnected) {
+                    JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
+                    jsoupAsyncTask.execute();
+                } else {
+                    Snackbar.make(view, "No Internet", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
 
-                JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
-                jsoupAsyncTask.execute();
-                scroll_hint();
             }
         });
         genPoem.setOnLongClickListener(new View.OnLongClickListener() {
@@ -204,6 +221,7 @@ public class MainActivity extends AppCompatActivity {
             current_content = poem.text();
             result.setText(current_content);
             ToggleFav(str);
+            scroll_hint();
 
 
 
@@ -306,7 +324,7 @@ public class MainActivity extends AppCompatActivity {
     public void scroll_hint() {
         if (!hinted) {
             hinted = true;
-            Toast.makeText(getApplicationContext(),"Swipe left and right for more",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Swipe left and right for more. Swipe down for translation",Toast.LENGTH_SHORT).show();
         }
     }
 

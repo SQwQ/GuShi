@@ -34,7 +34,7 @@ public class ViewFavs extends AppCompatActivity {
 
 
 
-        poem.setText(poem_body);
+        poem.setText("\n" + poem_body);
         JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
         jsoupAsyncTask.execute();
 

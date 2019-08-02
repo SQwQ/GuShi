@@ -78,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public Cursor search(String ...keyword) {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
-            String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL3 + " LIKE '%" + keyword[0] + "%'";
+            String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + COL4 + " LIKE '%" + keyword[0] + "%'";
             Cursor data = db.rawQuery(query, null);
             return data;
         } catch (SQLiteException e) {
