@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     String current_author;
     String current_title;
     String current_content;
+    boolean hinted = false;
 
 
 
@@ -106,6 +107,15 @@ public class MainActivity extends AppCompatActivity {
 
                 JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
                 jsoupAsyncTask.execute();
+                scroll_hint();
+            }
+        });
+        genPoem.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                String info = "作者: " + current_author + "\n" + "诗名：" + current_title;
+                Toast.makeText(getApplicationContext(),info,Toast.LENGTH_SHORT).show();
+                return true;
             }
         });
 
@@ -290,6 +300,13 @@ public class MainActivity extends AppCompatActivity {
                             input,
                     Toast.LENGTH_LONG).show();
 
+        }
+    }
+
+    public void scroll_hint() {
+        if (!hinted) {
+            hinted = true;
+            Toast.makeText(getApplicationContext(),"Swipe left and right for more",Toast.LENGTH_SHORT).show();
         }
     }
 
