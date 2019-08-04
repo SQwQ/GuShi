@@ -29,7 +29,7 @@ public class ViewFavs extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        id = intent.getStringExtra("id");
+        id = intent.getStringExtra("title");
         String poem_body = intent.getStringExtra("poem");
 
 

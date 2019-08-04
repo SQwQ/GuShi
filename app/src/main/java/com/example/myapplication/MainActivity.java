@@ -306,7 +306,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(Void... params) {
-            AnalysisGetter analysisGetter = new AnalysisGetter(current_id);
+            AnalysisGetter analysisGetter = new AnalysisGetter(current_title);
             return analysisGetter.getAnalysis('t');
 
         }

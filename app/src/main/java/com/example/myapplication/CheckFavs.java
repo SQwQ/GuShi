@@ -239,7 +239,7 @@ public class CheckFavs extends AppCompatActivity implements SearchView.OnQueryTe
                 System.out.println("SHUT IT DOWN!");
 
                 Intent intent = new Intent(getApplicationContext(), ViewFavs.class);
-                intent.putExtra("id", clickedObj.getString(clickedObj.getColumnIndex("weblink")));
+                intent.putExtra("title", clickedObj.getString(clickedObj.getColumnIndex("title")));
                 intent.putExtra("poem", clickedObj.getString(clickedObj.getColumnIndex("poem")));
                 startActivity(intent);
                 /*
