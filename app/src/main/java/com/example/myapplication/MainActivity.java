@@ -20,14 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
-/*
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-*/
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
@@ -38,10 +31,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 
-/*
-import karacken.curl.PageCurlAdapter;
-import karacken.curl.PageSurfaceView;
-*/
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,27 +60,6 @@ public class MainActivity extends AppCompatActivity {
         sqlHelper = new DatabaseHelper(getApplicationContext());
         result = (TextView) findViewById(R.id.poemoftheday);
 
-        ConnectivityManager cm =
-                (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
-        final boolean isConnected = activeNetwork != null &&
-                activeNetwork.isConnectedOrConnecting();
-
-        /*
-        result.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                //        .setAction("Action", null).show();
-                System.out.println("text clicked");
-                if (!(current_id == null || current_id.length() == 0)) {
-                    JsoupToastAsyncTask jsoupToastAsyncTask = new JsoupToastAsyncTask();
-                    jsoupToastAsyncTask.execute();
-                }
-            }
-        });
-        */
         star = (ToggleButton) findViewById(R.id.star);
         star.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -112,18 +81,22 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        /*
+        ConnectivityManager cm = (ConnectivityManager)getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        final boolean isConnected = activeNetwork != null &&
+                activeNetwork.isConnectedOrConnecting();
+        */
+
         FloatingActionButton genPoem = findViewById(R.id.generatePoem);
         genPoem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
-                if (isConnected) {
+
+
+
                     JsoupAsyncTask jsoupAsyncTask = new JsoupAsyncTask();
                     jsoupAsyncTask.execute();
-                } else {
-                    Snackbar.make(view, "No Internet", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
 
             }
         });
@@ -213,15 +186,20 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(LinkedList<String> input) {
 
             final LinkedList<String> res = input;
-
-            String str = res.get(0);
-            Elements poem = htmlDocument.select("div[id=" + str + "]");
-            current_id = str;
-            current_title = poem.prev().prev().text();
-            current_content = poem.text();
-            result.setText(current_content);
-            ToggleFav(str);
-            scroll_hint();
+            try {
+                String str = res.get(0);
+                Elements poem = htmlDocument.select("div[id=" + str + "]");
+                current_id = str;
+                current_title = poem.prev().prev().text();
+                current_content = poem.text();
+                result.setText(current_content);
+                ToggleFav(str);
+                scroll_hint();
+            } catch (IndexOutOfBoundsException e) {
+                Toast.makeText(MainActivity.this,
+                        "There is no Internet or there are no poems available for" + current_author,
+                        Toast.LENGTH_LONG).show();
+            }
 
 
 
